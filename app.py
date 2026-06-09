@@ -49,5 +49,16 @@ if uploaded_file:
     st.subheader("Top Similar Images")
 
     # Display results
-    for idx in indices[0]:
-        st.image(image_paths[idx], width=250)
+    threshold = 0.65
+    valid_results = False
+
+    for score, idx in zip(scores[0], indices[0]):
+
+        if score >= threshold:
+            valid_results = True
+
+            st.image(image_paths[idx], width=250)
+            st.write(f"Similarity: {score:.3f}")
+
+    if not valid_results:
+        st.warning("No similar images found in the database.")
