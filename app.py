@@ -49,7 +49,7 @@ if uploaded_file:
     st.subheader("Top Similar Images")
 
     # Display results
-    threshold = 0.65
+    threshold = 0.50
     valid_results = False
 
     for score, idx in zip(scores[0], indices[0]):
